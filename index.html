@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vending Machine Catalogue</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .item input[type="checkbox"] {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Vending Machine Catalogue</h1>
+    <div class="items">
+      <div class="item">
+        <input type="checkbox" id="item1" value="1.50">
+        <label for="item1">Snack 1 - $1.50</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="item2" value="2.00">
+        <label for="item2">Drink 1 - $2.00</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="item3" value="1.00">
+        <label for="item3">Snack 2 - $1.00</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" id="item4" value="2.50">
+        <label for="item4">Drink 2 - $2.50</label>
+      </div>
+    </div>
+    <button onclick="calculateTotal()">Calculate Total</button>
+    <p id="totalCost">Total Cost: $0.00</p>
+  </div>
+
+  <script>
+    function calculateTotal() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      let total = 0;
+      checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+          total += parseFloat(checkbox.value);
+        }
+      });
+      document.getElementById('totalCost').textContent = `Total Cost: $${total.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
